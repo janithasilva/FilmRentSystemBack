@@ -19,13 +19,7 @@ public class FilmService
 	@Autowired
 	FilmRipository repo;
 
-	public List<FilmOutputDetailedDto> getAllFilmsAsDtos()
-	{
-		List<Film> films = repo.findAll();
-
-		return films.stream().map(f -> convertFilmToDetailedDto(f)).toList();
-	}
-
+	//return all available films as dtos
 	public List<FilmOutputDto> getAllAvailableFilmsAsDtos()
 	{
 
@@ -37,6 +31,14 @@ public class FilmService
 				filmsAsDtos.add(convertFilmToDto(f));
 
 		return filmsAsDtos;
+	}
+
+	//return all films detailed version as dtos
+	public List<FilmOutputDetailedDto> getAllFilmsAsDtos()
+	{
+		List<Film> films = repo.findAll();
+
+		return films.stream().map(f -> convertFilmToDetailedDto(f)).toList();
 	}
 
 	public Film getFilmByTitle(String title)
