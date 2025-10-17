@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class RentOutputDto
 {
+	private long id;
 	private LocalDate start;
 	private LocalDate end;
 	private boolean paid;

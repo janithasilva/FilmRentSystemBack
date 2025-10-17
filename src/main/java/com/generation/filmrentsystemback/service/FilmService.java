@@ -39,7 +39,7 @@ public class FilmService
 		return filmsAsDtos;
 	}
 
-	public FilmOutputDto getFilmByTitle(String title)
+	public Film getFilmByTitle(String title)
 	{
 		Film f = repo.findByTitle(title);
 
@@ -47,10 +47,10 @@ public class FilmService
 			throw new NoSuchElementException("There is no film with the title "+title);
 		}
 
-		return convertFilmToDto(f);
+		return f;
 	}
 
-	public void save(FilmInputDto dto)
+	public void saveFilm(FilmInputDto dto)
 	{
 		Film f = new Film();
 
@@ -66,7 +66,7 @@ public class FilmService
 		repo.save(f);
 	}
 
-	public FilmOutputDto convertFilmToDto(Film f)
+	private FilmOutputDto convertFilmToDto(Film f)
 	{
 		FilmOutputDto dto = new FilmOutputDto();
 		dto.setId(f.getId());
@@ -80,7 +80,7 @@ public class FilmService
 		return dto;
 	}
 
-	public FilmOutputDetailedDto convertFilmToDetailedDto(Film f)
+	private FilmOutputDetailedDto convertFilmToDetailedDto(Film f)
 	{
 		FilmOutputDetailedDto dto = new FilmOutputDetailedDto();
 		dto.setId(f.getId());
